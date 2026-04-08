@@ -88,7 +88,7 @@ export default async function SearchPage({
             <Input
               name="q"
               defaultValue={query}
-              placeholder="Search across tasks..."
+              placeholder="Search Lode News classifieds and posts…"
               className="h-11 pl-9"
             />
           </div>
@@ -107,8 +107,9 @@ export default async function SearchPage({
           })}
         </div>
       ) : (
-        <div className="rounded-2xl border border-dashed border-border p-10 text-center text-muted-foreground">
-          No matching posts yet.
+        <div className="rounded-[1.75rem] border-2 border-dashed border-[#e8d0da] bg-[#fdf8fa]/90 p-12 text-center text-[#6b4a60]">
+          <p className="text-lg font-bold text-[#62013C]">No matching posts yet.</p>
+          <p className="mt-2 text-sm">Try different keywords or clear filters.</p>
         </div>
       )}
     </PageShell>

@@ -32,8 +32,8 @@ const variantShells = {
   'image-portfolio': 'bg-[linear-gradient(180deg,#07111f_0%,#13203a_100%)] text-white',
   'profile-creator': 'bg-[linear-gradient(180deg,#0a1120_0%,#101c34_100%)] text-white',
   'profile-business': 'bg-[linear-gradient(180deg,#f6fbff_0%,#ffffff_100%)]',
-  'classified-bulletin': 'bg-[linear-gradient(180deg,#edf3e4_0%,#ffffff_100%)]',
-  'classified-market': 'bg-[linear-gradient(180deg,#f4f6ef_0%,#ffffff_100%)]',
+  'classified-bulletin': 'bg-[linear-gradient(180deg,#fdf8fa_0%,#ffffff_100%)] text-[#62013C]',
+  'classified-market': 'bg-[linear-gradient(165deg,#fefcfd_0%,#f5e8ee_38%,#ffffff_100%)] text-[#62013C]',
   'sbm-curation': 'bg-[linear-gradient(180deg,#fff7ee_0%,#ffffff_100%)]',
   'sbm-library': 'bg-[linear-gradient(180deg,#f7f8fc_0%,#ffffff_100%)]',
 } as const
@@ -72,13 +72,21 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
           input: 'border border-[#dbc6b6] bg-white text-[#2f1d16]',
           button: 'bg-[#2f1d16] text-[#fff4e4] hover:bg-[#452920]',
         }
-      : {
-          muted: 'text-slate-600',
-          panel: 'border border-slate-200 bg-white',
-          soft: 'border border-slate-200 bg-slate-50',
-          input: 'border border-slate-200 bg-white text-slate-950',
-          button: 'bg-slate-950 text-white hover:bg-slate-800',
-        }
+      : layoutKey === 'classified-market' || layoutKey === 'classified-bulletin'
+        ? {
+            muted: 'text-[#6b4a60]',
+            panel: 'border border-[#e8d0da] bg-white shadow-[0_28px_80px_rgba(98,1,60,0.08)]',
+            soft: 'border border-[#ead6e0] bg-[#fdf8fa]',
+            input: 'border border-[#dcc8d4] bg-white text-[#62013C] shadow-sm',
+            button: 'bg-[#F2676A] text-white hover:bg-[#e85558]',
+          }
+        : {
+            muted: 'text-slate-600',
+            panel: 'border border-slate-200 bg-white',
+            soft: 'border border-slate-200 bg-slate-50',
+            input: 'border border-slate-200 bg-white text-slate-950',
+            button: 'bg-slate-950 text-white hover:bg-slate-800',
+          }
 
   return (
     <div className={`min-h-screen ${shellClass}`}>
@@ -195,17 +203,59 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
         ) : null}
 
         {layoutKey === 'classified-bulletin' || layoutKey === 'classified-market' ? (
-          <section className="mb-12 grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div className={`rounded-[1.8rem] p-6 ${ui.panel}`}>
-              <p className={`text-xs uppercase tracking-[0.3em] ${ui.muted}`}>{taskConfig?.label || task}</p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-foreground">Fast-moving notices, offers, and responses in a compact board format.</h1>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {['Quick to scan', 'Shorter response path', 'Clearer urgency cues'].map((item) => (
-                <div key={item} className={`rounded-[1.5rem] p-5 ${ui.soft}`}>
-                  <p className="text-sm font-semibold">{item}</p>
+          <section className="mb-14 lg:mb-20">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch">
+              <div className={`lg:col-span-5 rounded-[2rem] p-8 lg:p-10 ${ui.panel}`}>
+                <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#AD2959]">{taskConfig?.label || task}</p>
+                <h1 className="mt-5 text-4xl font-bold tracking-[-0.05em] text-[#62013C] sm:text-5xl lg:text-6xl">
+                  A classified grid built for quick scanning — with detail when you need it.
+                </h1>
+                <p className={`mt-6 text-lg leading-8 ${ui.muted}`}>{taskConfig?.description || 'Latest posts'}</p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link href="/search" className={`inline-flex items-center gap-2 rounded-2xl px-6 py-3.5 text-base font-bold ${ui.button}`}>
+                    Search marketplace
+                  </Link>
+                  <Link
+                    href={taskConfig?.route || '#'}
+                    className="inline-flex items-center gap-2 rounded-2xl border border-[#e8d0da] bg-white px-6 py-3.5 text-base font-bold text-[#62013C] shadow-sm hover:bg-[#fdf8fa]"
+                  >
+                    Browse all
+                  </Link>
                 </div>
-              ))}
+              </div>
+              <div className="flex flex-col gap-4 lg:col-span-7">
+                <form className={`rounded-[1.75rem] p-6 sm:p-8 ${ui.soft}`} action={taskConfig?.route || '#'}>
+                  <div className="text-xs font-bold uppercase tracking-[0.22em] text-[#AD2959]">Narrow results</div>
+                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <div className="sm:col-span-2">
+                      <label className={`block text-xs font-semibold uppercase tracking-wider ${ui.muted}`}>Category</label>
+                      <select name="category" defaultValue={normalizedCategory} className={`mt-2 h-12 w-full rounded-xl px-3 text-sm font-medium ${ui.input}`}>
+                        <option value="all">All categories</option>
+                        {CATEGORY_OPTIONS.map((item) => (
+                          <option key={item.slug} value={item.slug}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <button type="submit" className={`mt-5 h-12 w-full rounded-xl text-sm font-bold sm:w-auto sm:px-10 ${ui.button}`}>
+                    Apply filters
+                  </button>
+                </form>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    ['Quick scan', 'Large imagery, bold type, obvious categories.'],
+                    ['Trust cues', 'Location and contact patterns stay consistent.'],
+                    ['Deep detail', 'Every ad opens into a structured detail layout.'],
+                  ].map(([title, body]) => (
+                    <div key={title} className={`rounded-[1.35rem] p-5 ${ui.soft}`}>
+                      <p className="text-sm font-bold text-[#62013C]">{title}</p>
+                      <p className={`mt-2 text-sm leading-relaxed ${ui.muted}`}>{body}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
         ) : null}

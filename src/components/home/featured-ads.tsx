@@ -14,12 +14,8 @@ export function FeaturedAds() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              Featured Classifieds
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Great deals from our community marketplace
-            </p>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Spotlight classifieds</h2>
+            <p className="mt-2 text-muted-foreground">Fresh picks from readers buying and selling across Colorado</p>
           </div>
           <Button variant="ghost" asChild className="hidden sm:flex">
             <Link href="/classifieds">

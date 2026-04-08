@@ -98,6 +98,8 @@ export function TaskPostCard({
   const rawCategory = content.category || post.tags?.[0] || 'Post'
   const normalizedCategory = normalizeCategory(rawCategory)
   const category = CATEGORY_OPTIONS.find((item) => item.slug === normalizedCategory)?.name || rawCategory
+  const contentRecord = content as Record<string, unknown>
+  const priceValue = typeof contentRecord.price === 'number' && Number.isFinite(contentRecord.price) ? contentRecord.price : null
   const variant = taskKey || 'listing'
   const visualVariant = cardStyles[getVariantForTask(variant)]
   const isBookmarkVariant = variant === 'sbm' || variant === 'social'
@@ -112,11 +114,11 @@ export function TaskPostCard({
   if (isDirectorySurface) {
     const cardTone = recipe.brandPack === 'market-utility'
       ? {
-          frame: 'rounded-[1.75rem] border border-[#d7deca] bg-white shadow-[0_18px_44px_rgba(64,76,34,0.08)] hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(64,76,34,0.14)]',
-          badge: 'bg-[#1f2617] text-[#edf5dc]',
-          muted: 'text-[#5b664c]',
-          title: 'text-[#1f2617]',
-          cta: 'text-[#1f2617]',
+          frame: 'rounded-[1.75rem] border border-[#e8d0da] bg-white shadow-[0_22px_56px_rgba(98,1,60,0.09)] hover:-translate-y-1 hover:shadow-[0_28px_64px_rgba(98,1,60,0.14)]',
+          badge: 'bg-[#AD2959] text-white',
+          muted: 'text-[#6b4a60]',
+          title: 'text-[#62013C]',
+          cta: 'text-[#F2676A]',
         }
       : {
           frame: 'rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_18px_44px_rgba(15,23,42,0.08)] hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.14)]',
@@ -142,9 +144,12 @@ export function TaskPostCard({
         </div>
         <div className="flex flex-1 flex-col p-5">
           <div className="flex items-center justify-between gap-3">
-            <h3 className={`line-clamp-2 text-xl font-semibold leading-snug ${cardTone.title}`}>{post.title}</h3>
+            <h3 className={`line-clamp-2 text-xl font-bold leading-snug ${cardTone.title}`}>{post.title}</h3>
             <ArrowUpRight className={`h-5 w-5 shrink-0 ${cardTone.muted}`} />
           </div>
+          {priceValue != null && recipe.brandPack === 'market-utility' ? (
+            <p className="mt-2 text-2xl font-black tracking-tight text-[#F2676A]">${priceValue.toLocaleString()}</p>
+          ) : null}
           <p className={`mt-3 line-clamp-3 text-sm leading-7 ${cardTone.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this local listing.'}</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs">
             {content.location ? <span className={`inline-flex items-center gap-1 ${cardTone.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}

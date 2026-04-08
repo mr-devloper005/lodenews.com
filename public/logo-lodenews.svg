@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 52" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">Lode News</title>
+  <desc id="logoDesc">Wordmark with mineral-vein mark</desc>
+  <g>
+    <rect x="0" y="4" width="44" height="44" rx="11" fill="#62013C"/>
+    <path
+      d="M9.5 41 L13.5 17 L19 24 L31 11"
+      stroke="#FBE087"
+      stroke-width="2.8"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="28.5" cy="13" r="3" fill="#F2676A"/>
+  </g>
+  <text
+    x="54"
+    y="36"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="26"
+    font-weight="800"
+    fill="#62013C"
+  >
+    Lode
+  </text>
+  <text
+    x="132"
+    y="36"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="26"
+    font-weight="700"
+    fill="#AD2959"
+  >
+    News
+  </text>
+</svg>

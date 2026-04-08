@@ -49,9 +49,21 @@ export default function ContactPage() {
   const lanes =
     productKind === 'directory'
       ? [
-          { icon: Building2, title: 'Business onboarding', body: 'Add listings, verify operational details, and bring your business surface live quickly.' },
-          { icon: Phone, title: 'Partnership support', body: 'Talk through bulk publishing, local growth, and operational setup questions.' },
-          { icon: MapPin, title: 'Coverage requests', body: 'Need a new geography or category lane? We can shape the directory around it.' },
+          {
+            icon: Building2,
+            title: 'Dealers, landlords, and employers',
+            body: 'Volume posting, invoicing for promoted slots, and onboarding for teams that list vehicles, rentals, or jobs every week.',
+          },
+          {
+            icon: Phone,
+            title: 'Reader & seller support',
+            body: 'Help with accounts, payments for boosts, mobile uploads, and troubleshooting when an ad will not publish.',
+          },
+          {
+            icon: MapPin,
+            title: 'Coverage & categories',
+            body: 'Suggest a new geography, request a category, or flag systemic issues you are seeing in local buying and selling.',
+          },
         ]
       : productKind === 'editorial'
         ? [
@@ -78,8 +90,10 @@ export default function ContactPage() {
         <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Contact {SITE_CONFIG.name}</p>
-            <h1 className="mt-4 text-5xl font-semibold tracking-[-0.05em]">A support page that matches the product, not a generic contact form.</h1>
-            <p className={`mt-5 max-w-2xl text-sm leading-8 ${tone.muted}`}>Tell us what you are trying to publish, fix, or launch. We will route it through the right lane instead of forcing every request into the same support bucket.</p>
+            <h1 className="mt-4 text-5xl font-semibold tracking-[-0.05em]">Contact Lode News</h1>
+            <p className={`mt-5 max-w-2xl text-sm leading-8 ${tone.muted}`}>
+              News tips, marketplace help, and partnership questions go to different teams. Share a few details below and we will point you to the right person—usually within one business day.
+            </p>
             <div className="mt-8 space-y-4">
               {lanes.map((lane) => (
                 <div key={lane.title} className={`rounded-[1.6rem] p-5 ${tone.soft}`}>

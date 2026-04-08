@@ -1,64 +1,142 @@
 import type { User, Article, Listing, ClassifiedAd, Comment, Bookmark, BookmarkCollection, Notification, Category, Testimonial, DashboardStats, TeamMember, CommunityEvent, CommunityGroup, PressAsset, ApiEndpoint, FAQItem, BlogPost, PressCoverage } from '@/types'
 
-// Mock Users
-export const mockUsers: User[] = []
+// Mock Users (Lode News community & marketplace personas)
+export const mockUsers: User[] = [
+  {
+    id: 'u1',
+    name: 'Morgan Ellis',
+    email: 'morgan.ellis@example.net',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
+    bio: 'Denver-based seller; furniture and outdoor gear.',
+    joinedDate: '2021-04-12',
+    location: 'Denver, CO',
+    followers: 128,
+    following: 54,
+    isVerified: true,
+  },
+  {
+    id: 'u2',
+    name: 'Devon Okonkwo',
+    email: 'devon.okonkwo@example.net',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
+    bio: 'Photographer and audio gear hobbyist.',
+    joinedDate: '2020-11-03',
+    location: 'Boulder, CO',
+    followers: 256,
+    following: 112,
+    isVerified: true,
+  },
+  {
+    id: 'u3',
+    name: 'Riley Santos',
+    email: 'riley.santos@example.net',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop',
+    bio: 'Cycling enthusiast and part-time bike mechanic.',
+    joinedDate: '2022-01-20',
+    location: 'Fort Collins, CO',
+    followers: 89,
+    following: 41,
+    isVerified: false,
+  },
+  {
+    id: 'u4',
+    name: 'Jordan Kim',
+    email: 'jordan.kim@example.net',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop',
+    bio: 'Small landlord and weekend woodworker.',
+    joinedDate: '2019-08-15',
+    location: 'Aurora, CO',
+    followers: 64,
+    following: 33,
+    isVerified: true,
+  },
+  {
+    id: 'u5',
+    name: 'Casey Morales',
+    email: 'casey.morales@example.net',
+    avatar: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c98?w=200&h=200&fit=crop',
+    bio: 'IT consultant selling home office upgrades.',
+    joinedDate: '2023-02-08',
+    location: 'Lakewood, CO',
+    followers: 42,
+    following: 28,
+    isVerified: false,
+  },
+  {
+    id: 'u6',
+    name: 'Samira Haddad',
+    email: 'samira.haddad@example.net',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop',
+    bio: 'Property manager and rental listings.',
+    joinedDate: '2018-06-01',
+    location: 'Denver, CO',
+    followers: 312,
+    following: 98,
+    isVerified: true,
+  },
+]
 
 export const currentUser: User = mockUsers[0]
 
 // Mock Articles
 export const mockArticles: Article[] = [
- 
   {
     id: '4',
-    title: 'Remote Work Culture: Lessons from Leading Teams',
-    slug: 'remote-work-culture-lessons',
-    excerpt: 'How top companies are building thriving remote cultures and what you can learn from them.',
-    content: '<p>The shift to remote work has fundamentally changed how teams collaborate...</p>',
-    coverImage: 'https://images.unsplash.com/photo-1552581234-26160f608093?w=1200&h=600&fit=crop',
+    title: 'Colorado renters: what changed in the 2026 warranty of habitability rules',
+    slug: 'colorado-renters-habitability-2026',
+    excerpt:
+      'A plain-language breakdown of new timelines for repairs, documentation, and disputes—what to keep in your inbox if you rent along the Front Range.',
+    content:
+      '<p>When the legislature updated warranty of habitability standards last session, most tenants heard the headline and little else. Here is how notices, timelines, and local enforcement actually work in Denver, Boulder, and smaller mountain towns.</p>',
+    coverImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=600&fit=crop',
     author: mockUsers[3],
-    category: 'Business',
-    tags: ['Remote Work', 'Culture', 'Leadership'],
+    category: 'Housing',
+    tags: ['Colorado', 'Renters', 'Policy'],
     publishedAt: '2026-03-01',
     readTime: 10,
     views: 15200,
     likes: 1120,
     commentsCount: 67,
-    isFeatured: true
+    isFeatured: true,
   },
   {
     id: '5',
-    title: 'Accessibility First: Designing for Everyone',
-    slug: 'accessibility-first-design',
-    excerpt: 'Why accessibility should be at the foundation of every design decision, not an afterthought.',
-    content: '<p>Accessibility is not just about compliance—it is about creating experiences that work for everyone...</p>',
-    coverImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&h=600&fit=crop',
+    title: 'Used car prices on the Front Range: three charts that explain the spring bump',
+    slug: 'front-range-used-car-prices-spring',
+    excerpt:
+      'Dealer lots and private-party listings both moved this quarter. We compared Lode News classifieds data with wholesale auctions to see where buyers still have leverage.',
+    content:
+      '<p>Spring always lifts asking prices on trucks and SUVs. This year, higher inventory in compact cars is giving urban buyers a rare window—if they are willing to shop older model years.</p>',
+    coverImage: 'https://images.unsplash.com/photo-1489827904764-24f88234fba7?w=1200&h=600&fit=crop',
     author: mockUsers[4],
-    category: 'Accessibility',
-    tags: ['Accessibility', 'Inclusive Design', 'WCAG'],
+    category: 'Business',
+    tags: ['Autos', 'Data', 'Colorado'],
     publishedAt: '2026-02-28',
     readTime: 7,
     views: 5400,
     likes: 389,
     commentsCount: 19,
-    isFeatured: false
+    isFeatured: false,
   },
   {
     id: '6',
-    title: 'The Complete Guide to TypeScript 6.0',
-    slug: 'complete-guide-typescript-6',
-    excerpt: 'Everything you need to know about the latest TypeScript release and its game-changing features.',
-    content: '<p>TypeScript continues to evolve, bringing more powerful type-safety features...</p>',
-    coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=600&fit=crop',
+    title: 'How we moderate scams in the Lode News classifieds',
+    slug: 'how-we-moderate-classified-scams',
+    excerpt:
+      'From wire-transfer red flags to repeat listing patterns, here is what our desk watches for—and how to report a suspicious ad before anyone sends money.',
+    content:
+      '<p>Marketplaces attached to news brands have to earn trust every day. These are the signals we use to slow down fraud without blocking legitimate sellers.</p>',
+    coverImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop',
     author: mockUsers[1],
-    category: 'Technology',
-    tags: ['TypeScript', 'JavaScript', 'Development'],
+    category: 'Behind the desk',
+    tags: ['Trust & safety', 'Classifieds', 'Readers'],
     publishedAt: '2026-02-25',
     readTime: 15,
     views: 21000,
     likes: 1560,
     commentsCount: 89,
-    isFeatured: true
-  }
+    isFeatured: true,
+  },
 ]
 
 // Mock Listings
@@ -82,9 +160,9 @@ export const mockListings: Listing[] = [
     reviewsCount: 234,
     tags: ['WiFi', 'Outdoor Seating', 'Pet Friendly'],
     amenities: ['Free WiFi', 'Outdoor Seating', 'Pet Friendly', 'Wheelchair Accessible'],
-    contactPhone: '(415) 555-0123',
+    contactPhone: '(303) 744-2081',
     contactEmail: 'hello@artisancoffee.com',
-    website: 'https://artisancoffee.com',
+    website: 'https://rivernorthespresso.co',
     hours: [
       { day: 'Monday', open: '7:00 AM', close: '7:00 PM', isClosed: false },
       { day: 'Tuesday', open: '7:00 AM', close: '7:00 PM', isClosed: false },
@@ -216,141 +294,137 @@ export const mockListings: Listing[] = [
   }
 ]
 
-// Mock Classified Ads
+// Mock Classified Ads (Front Range–focused sample inventory)
 export const mockClassifiedAds: ClassifiedAd[] = [
   {
     id: '1',
-    title: 'MacBook Pro 16" M3 Max - Like New',
+    title: 'MacBook Pro 16" M3 Max — like new',
     slug: 'macbook-pro-16-m3-max',
-    description: 'Selling my MacBook Pro 16" with M3 Max chip. Only 6 months old, in perfect condition. Comes with original box, charger, and AppleCare+ until 2027. 64GB RAM, 1TB SSD. Great for video editing and development.',
+    description:
+      'Selling my 16" MacBook Pro with M3 Max. Purchased at Cherry Creek Apple Store last year; still under AppleCare+ through 2027. 64GB RAM, 1TB SSD. Original box, MagSafe cable, and sleeve included. Meet in Denver or Boulder for local pickup.',
     images: [
       'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&h=600&fit=crop'
+      'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&h=600&fit=crop',
     ],
     category: 'Electronics',
     subcategory: 'Computers',
     price: 2800,
     currency: 'USD',
     condition: 'like-new',
-    location: 'San Francisco, CA',
+    location: 'Denver, CO',
     seller: mockUsers[1],
     createdAt: '2026-03-12',
     views: 456,
     saves: 34,
     isFeatured: true,
     isNegotiable: true,
-    status: 'active'
+    status: 'active',
   },
   {
     id: '2',
-    title: 'Vintage Mid-Century Modern Sofa',
+    title: 'Vintage Danish teak sofa — Boulder pickup',
     slug: 'vintage-mid-century-sofa',
-    description: 'Beautiful authentic 1960s Danish modern sofa in excellent condition. Original teak frame with new upholstery in emerald green velvet. A true statement piece.',
-    images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop'
-    ],
+    description:
+      'Authentic 1960s Danish frame with new emerald velvet upholstery. No pets, non-smoking home. Measures 82" wide; fits well in Capitol Hill or Mapleton rowhomes. Buyer loads; I can recommend movers.',
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop'],
     category: 'Home & Garden',
     subcategory: 'Furniture',
     price: 1500,
     currency: 'USD',
     condition: 'good',
-    location: 'Los Angeles, CA',
+    location: 'Boulder, CO',
     seller: mockUsers[0],
     createdAt: '2026-03-10',
     views: 234,
     saves: 28,
     isFeatured: true,
     isNegotiable: true,
-    status: 'active'
+    status: 'active',
   },
   {
     id: '3',
-    title: '2023 Trek Domane SL5 Road Bike',
+    title: '2023 Trek Domane SL 5 — 56cm',
     slug: 'trek-domane-sl5-road-bike',
-    description: 'High-performance road bike, size 56cm. Carbon frame, Shimano 105 groupset. Perfect for long rides and racing. Less than 500 miles ridden.',
-    images: [
-      'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&h=600&fit=crop'
-    ],
+    description:
+      'Carbon endurance road bike, Shimano 105, tubeless-ready wheels. Under 600 miles, stored indoors. Sized for roughly 5\'9"–6\'0". Includes Garmin mount and spare tubes. Fort Collins pickup preferred.',
+    images: ['https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&h=600&fit=crop'],
     category: 'Sports & Outdoors',
     subcategory: 'Cycling',
     price: 2200,
     currency: 'USD',
     condition: 'like-new',
-    location: 'Austin, TX',
+    location: 'Fort Collins, CO',
     seller: mockUsers[2],
     createdAt: '2026-03-08',
     views: 189,
     saves: 15,
     isFeatured: false,
     isNegotiable: false,
-    status: 'active'
+    status: 'active',
   },
   {
     id: '4',
-    title: 'Sony A7IV Camera Body + 24-70mm Lens',
+    title: 'Sony A7 IV + 24-70mm f/2.8 GM II',
     slug: 'sony-a7iv-camera-kit',
-    description: 'Professional mirrorless camera kit. Includes Sony A7IV body and Sony 24-70mm f/2.8 GM lens. Shutter count under 5000. Perfect for photography and videography.',
-    images: [
-      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&h=600&fit=crop'
-    ],
+    description:
+      'Full-frame kit for photo and video. Shutter count 4,200. Lens and body caps, two batteries, charger, and Peak Design strap. Upgraded to a different system—this one never saw harsh weather.',
+    images: ['https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&h=600&fit=crop'],
     category: 'Electronics',
     subcategory: 'Cameras',
     price: 3200,
     currency: 'USD',
     condition: 'good',
-    location: 'New York, NY',
+    location: 'Denver, CO',
     seller: mockUsers[3],
     createdAt: '2026-03-05',
     views: 312,
     saves: 41,
     isFeatured: true,
     isNegotiable: true,
-    status: 'active'
+    status: 'active',
   },
   {
     id: '5',
-    title: 'Herman Miller Aeron Chair - Size B',
+    title: 'Herman Miller Aeron — size B, graphite',
     slug: 'herman-miller-aeron-chair',
-    description: 'Ergonomic office chair in graphite. Fully loaded with all adjustments. Size B fits most people. Original purchase from authorized dealer.',
-    images: [
-      'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800&h=600&fit=crop'
-    ],
+    description:
+      'Fully adjustable lumbar and tilt. Purchased through authorized dealer in 2022. No tears or stains. Great for long editing sessions—switching to a standing desk setup.',
+    images: ['https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=800&h=600&fit=crop'],
     category: 'Home & Garden',
     subcategory: 'Furniture',
     price: 850,
     currency: 'USD',
     condition: 'good',
-    location: 'Seattle, WA',
+    location: 'Lakewood, CO',
     seller: mockUsers[4],
     createdAt: '2026-03-01',
     views: 178,
     saves: 22,
     isFeatured: false,
     isNegotiable: true,
-    status: 'active'
+    status: 'active',
   },
   {
     id: '6',
-    title: 'Apartment Available - 2BR Downtown',
+    title: 'LoDo 2BR — available April 1',
     slug: 'apartment-2br-downtown',
-    description: 'Spacious 2-bedroom apartment in the heart of downtown. Modern kitchen, in-unit laundry, gym access. Available April 1st. $2,500/month.',
-    images: [
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop'
-    ],
+    description:
+      'Corner unit with in-unit laundry, gym, and reserved parking stall. Walk to Union Station and A-line. $2,500/month on a 12-month lease; tenant pays electric. Showing windows Sat/Sun afternoons.',
+    images: ['https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop'],
     category: 'Real Estate',
     subcategory: 'Rentals',
     price: 2500,
     currency: 'USD',
     condition: 'new',
-    location: 'Chicago, IL',
-    seller: mockUsers[0],
+    location: 'Denver, CO',
+    seller: mockUsers[5],
     createdAt: '2026-02-28',
     views: 567,
     saves: 89,
     isFeatured: true,
     isNegotiable: false,
-    status: 'active'
-  }
+    status: 'active',
+  },
 ]
 
 // Mock Comments
@@ -755,51 +829,51 @@ export const mockTeamMembers: TeamMember[] = [
   {
     id: 'team-1',
     name: 'Avery Brooks',
-    role: 'Head of Community',
+    role: 'Director of audience',
     avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Building programs that connect creators with meaningful collaborations.',
-    location: 'Austin, TX'
+    bio: 'Runs reader membership, events, and the Lode News marketplace partnerships desk.',
+    location: 'Denver, CO',
   },
   {
     id: 'team-2',
     name: 'Jordan Lee',
-    role: 'Product Lead',
+    role: 'Product lead, classifieds',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-    bio: 'Designing calm, curated experiences for modern teams.',
-    location: 'San Francisco, CA'
+    bio: 'Ships posting tools, search, and fraud prevention so sellers and buyers stay safe.',
+    location: 'Denver, CO',
   },
   {
     id: 'team-3',
     name: 'Priya Desai',
     role: 'Engineering',
-    avatar: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&h=200&fit=crop',
-    bio: 'Focused on reliability, search, and delightful performance.',
-    location: 'New York, NY'
-  }
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop',
+    bio: 'Keeps feeds fast at deadline and scales the platform as listings grow.',
+    location: 'Boulder, CO',
+  },
 ]
 
 export const mockCommunityEvents: CommunityEvent[] = [
   {
     id: 'event-1',
-    title: 'Weekly Bookmark Jam',
-    date: 'Every Friday',
+    title: 'Seller office hours — photography tips',
+    date: 'Every Thursday',
     tag: 'Live',
-    description: 'Curate your best links together and learn from fellow members.'
+    description: 'Open Zoom with our photo editor on how to shoot listings that convert.',
   },
   {
     id: 'event-2',
-    title: 'Design Systems Roundtable',
-    date: 'April 2',
-    tag: 'Workshop',
-    description: 'Swap processes and audit templates with peers.'
+    title: 'Housing & rentals Q&A with the business desk',
+    date: 'April 8',
+    tag: 'Forum',
+    description: 'Ask reporters how we verify rental scams and what red flags we watch for.',
   },
   {
     id: 'event-3',
-    title: 'Creator Office Hours',
-    date: 'April 10',
-    tag: 'AMA',
-    description: 'Ask our team anything about your workflow.'
-  }
+    title: 'Spring moving week: featured ad boost walkthrough',
+    date: 'April 15',
+    tag: 'Workshop',
+    description: 'Step through posting furniture and vehicle ads before peak weekend traffic.',
+  },
 ]
 
 export const mockCommunityGroups: CommunityGroup[] = [
@@ -860,68 +934,71 @@ export const mockApiEndpoints: ApiEndpoint[] = [
 export const mockFaqs: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'How do I submit a bookmark?',
-    answer: 'Open Social Bookmarks and choose Submit Bookmark to add your link.'
+    question: 'How do I post a classified ad on Lode News?',
+    answer:
+      'Create a free account, open “Post an ad,” choose the right category, then add photos, price, and a description. You can save a draft, publish when ready, and edit or remove the ad from your dashboard at any time.',
   },
   {
     id: 'faq-2',
-    question: 'Can I create private collections?',
-    answer: 'Yes. Set your collection to private when creating it.'
+    question: 'Does Lode News handle payment or shipping between buyers and sellers?',
+    answer:
+      'No. Deals are between you and the other party. We provide the listing surface and reporting tools; we never ask for wire transfers up front or “verification fees” outside the site.',
   },
   {
     id: 'faq-3',
-    question: 'How do I upgrade plans?',
-    answer: 'Go to Settings, then Billing to manage your subscription.'
-  }
+    question: 'How do I report a suspicious listing?',
+    answer:
+      'Use the report link on the ad or email classifieds@lodenews.com with the URL and a short note. Our team reviews reports during business hours and may remove listings that violate policy.',
+  },
 ]
 
 export const mockBlogPosts: BlogPost[] = [
   {
     id: 'blog-1',
-    title: 'Community Notes: March',
+    title: 'Notes from the desk: March listings snapshot',
     date: 'Mar 12, 2026',
-    excerpt: 'Highlights from the community, trending collections, and product updates.',
-    tag: 'Updates',
-    author: 'Avery Brooks',
-    readTime: '4 min'
+    excerpt: 'What sold fastest, which categories picked up, and how we are tuning search for spring moving season.',
+    tag: 'Classifieds',
+    author: 'Lode News Marketplace desk',
+    readTime: '4 min',
   },
   {
     id: 'blog-2',
-    title: 'Designing for Shared Knowledge',
+    title: 'Why we verify high-value vehicle ads',
     date: 'Feb 28, 2026',
-    excerpt: 'How we think about curation, trust, and discovery in social bookmarking.',
-    tag: 'Design',
-    author: 'Jordan Lee',
-    readTime: '6 min'
+    excerpt: 'A look at the extra checks we run when prices or fraud signals spike—and what sellers can do to clear the bar.',
+    tag: 'Trust & safety',
+    author: 'Jordan Kim',
+    readTime: '6 min',
   },
   {
     id: 'blog-3',
-    title: 'Building the Social Bookmarking Hub',
+    title: 'Reader tips: photographing furniture that actually sells',
     date: 'Feb 10, 2026',
-    excerpt: 'A behind-the-scenes look at the new SBM module and its workflows.',
-    tag: 'Product',
-    author: 'Priya Desai',
-    readTime: '5 min'
-  }
+    excerpt: 'Lighting, staging, and honest wear—what our photo editors wish every seller knew before hitting publish.',
+    tag: 'Guides',
+    author: 'Sofia Alvarez',
+    readTime: '5 min',
+  },
 ]
 
 export const mockPressCoverage: PressCoverage[] = [
   {
     id: 'press-coverage-1',
-    outlet: 'Product Weekly',
-    headline: 'This platform makes link sharing feel premium.',
-    date: 'Mar 2026'
+    outlet: 'Colorado Sun',
+    headline: 'Lode News expands classifieds with stricter fraud checks for high-ticket items.',
+    date: 'Mar 2026',
   },
   {
     id: 'press-coverage-2',
-    outlet: 'Design Journal',
-    headline: 'A fresh take on community curation.',
-    date: 'Feb 2026'
+    outlet: 'Denver Business Journal',
+    headline: 'News publishers test marketplaces: Lode News ties readers to local buyers and sellers.',
+    date: 'Feb 2026',
   },
   {
     id: 'press-coverage-3',
-    outlet: 'Tech Today',
-    headline: 'Why teams are switching to this platform.',
-    date: 'Jan 2026'
-  }
+    outlet: 'Nieman Lab',
+    headline: 'How one regional desk keeps classified revenue without surrendering editorial voice.',
+    date: 'Jan 2026',
+  },
 ]
