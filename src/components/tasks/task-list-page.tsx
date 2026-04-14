@@ -290,7 +290,7 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
             ))}
             <div className="mt-4 flex flex-wrap gap-4 text-sm">
               {intro.links.map((link) => (
-                <a key={link.href} href={link.href} className="font-semibold text-foreground hover:underline">{link.label}</a>
+                <a key={`${link.label}:${link.href}`} href={link.href} className="font-semibold text-foreground hover:underline">{link.label}</a>
               ))}
             </div>
           </section>
