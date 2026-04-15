@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -6,9 +6,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { mockFaqs } from '@/data/mock-data'
 
 const topics = [
-  { title: 'Getting Started', description: 'Create your account and publish your first post.' },
-  { title: 'Bookmarks & Collections', description: 'Save links, organize folders, and share collections.' },
-  { title: 'Listings & Ads', description: 'Manage your business listings and classifieds.' },
+  { title: 'Posting & editing ads', description: 'Categories, photos, pricing, and how to change a live listing.' },
+  { title: 'Safety & scams', description: 'How to spot fraud, when to walk away, and how reports are handled.' },
+  { title: 'Accounts & billing', description: 'Sign-in help, promoted listings, and receipts from Lode News.' },
 ]
 
 export default function HelpPage() {

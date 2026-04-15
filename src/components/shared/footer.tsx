@@ -57,15 +57,29 @@ export function Footer() {
 
   if (recipe.footer === 'minimal-footer') {
     return (
-      <footer className="border-t border-[#d7deca] bg-[#f4f6ef] text-[#1f2617]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <footer className="border-t border-[#AD2959]/35 bg-[#62013C] text-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
-            <p className="text-lg font-semibold">{SITE_CONFIG.name}</p>
-            <p className="mt-1 text-sm text-[#56604b]">{SITE_CONFIG.description}</p>
+            <div className="flex items-center gap-3">
+              <img
+                src="/favicon.png?v=1"
+                alt=""
+                width={40}
+                height={40}
+                className="h-10 w-10 shrink-0 rounded-xl object-contain ring-1 ring-white/25"
+                aria-hidden
+              />
+              <p className="bg-gradient-to-r from-[#FBE087] to-[#F2676A] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent">{SITE_CONFIG.name}</p>
+            </div>
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">{SITE_CONFIG.description}</p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2">
             {enabledTasks.slice(0, 5).map((task) => (
-              <Link key={task.key} href={task.route} className="rounded-lg border border-[#d7deca] bg-white px-3 py-2 text-sm font-medium text-[#1f2617] hover:bg-[#ebefdf]">
+              <Link
+                key={task.key}
+                href={task.route}
+                className="rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#FBE087]/95 transition hover:border-[#F2676A]/60 hover:bg-white/10 hover:text-white"
+              >
                 {task.label}
               </Link>
             ))}
@@ -81,14 +95,19 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr_1fr]">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-7">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/8 p-1.5">
-                  <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="48" height="48" className="h-full w-full object-contain" />
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/favicon.png?v=1"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 rounded-xl object-contain ring-1 ring-white/15"
+                    aria-hidden
+                  />
+                  <span className="text-lg font-bold tracking-tight text-white">{SITE_CONFIG.name}</span>
                 </div>
-                <div>
-                  <p className="text-lg font-semibold">{SITE_CONFIG.name}</p>
-                  <p className="text-xs uppercase tracking-[0.24em] text-slate-400">{siteContent.footer.tagline}</p>
-                </div>
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">{siteContent.footer.tagline}</p>
               </div>
               <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">{SITE_CONFIG.description}</p>
               {primaryTask ? (
@@ -143,7 +162,17 @@ export function Footer() {
                 <Sparkles className="h-3.5 w-3.5" />
                 Editorial desk
               </div>
-              <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</h3>
+              <div className="mt-5 flex items-center gap-3">
+                <img
+                  src="/favicon.png?v=1"
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0 rounded-2xl border border-[#dbc6b6] bg-white object-contain shadow-sm"
+                  aria-hidden
+                />
+                <h3 className="text-3xl font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</h3>
+              </div>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#72594a]">{SITE_CONFIG.description}</p>
             </div>
             <div>
@@ -173,14 +202,12 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
-            <Link href="/" className="flex items-center gap-3">
-              <div className="h-11 w-11 overflow-hidden rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
-                <img src="/favicon.png?v=20260401" alt={`${SITE_CONFIG.name} logo`} width="44" height="44" className="h-full w-full object-contain" />
+            <Link href="/" className="flex flex-col gap-1">
+              <div className="flex items-center gap-3">
+                <img src="/favicon.png?v=1" alt="" width={40} height={40} className="h-10 w-10 shrink-0 object-contain" aria-hidden />
+                <span className="text-xl font-extrabold tracking-tight text-slate-950">{SITE_CONFIG.name}</span>
               </div>
-              <div>
-                <span className="block text-lg font-semibold">{SITE_CONFIG.name}</span>
-                <span className="text-xs uppercase tracking-[0.22em] text-slate-500">{siteContent.footer.tagline}</span>
-              </div>
+              <span className="text-xs uppercase tracking-[0.22em] text-slate-500">{siteContent.footer.tagline}</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">{SITE_CONFIG.description}</p>
           </div>

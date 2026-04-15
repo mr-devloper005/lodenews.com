@@ -8,22 +8,34 @@ import { mockTeamMembers } from "@/data/mock-data";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const highlights = [
-  { label: "Creators onboarded", value: "12k+" },
-  { label: "Bookmarks shared", value: "180k" },
-  { label: "Listings published", value: "8.6k" },
+  { label: "Monthly classified impressions", value: "1.2M+" },
+  { label: "Front Range cities in coverage", value: "15+" },
+  { label: "Newsroom staff & contributors", value: "28" },
 ];
 
 const values = [
-  { title: "Curated by people", description: "We believe trusted recommendations beat endless feeds." },
-  { title: "Designed for focus", description: "Clear, calm UI helps you find the next best resource fast." },
-  { title: "Built to share", description: "Collections make collaboration and knowledge flow effortless." },
+  {
+    title: "Editorial standards extend to ads",
+    description:
+      "Scam patterns, misleading prices, and stolen photos are reviewed with the same skepticism we bring to tips on the news desk.",
+  },
+  {
+    title: "Built for real transactions",
+    description:
+      "Large photos, clear fields, and contact paths that keep buyers and sellers in control—without a middleman clipping every message.",
+  },
+  {
+    title: "Local first",
+    description:
+      "Categories and geography reflect how Coloradans actually buy and sell: mountain gear, leases, trucks, and weekend projects.",
+  },
 ];
 
 export default function AboutPage() {
   return (
     <PageShell
       title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern platform for creators, communities, and curated business discovery.`}
+      description={`${SITE_CONFIG.name} pairs independent reporting with a premium classifieds marketplace for the Front Range and beyond.`}
       actions={
         <>
           <Button variant="outline" asChild>
@@ -39,12 +51,9 @@ export default function AboutPage() {
         <Card className="border-border bg-card">
           <CardContent className="space-y-4 p-6">
             <Badge variant="secondary">Our Story</Badge>
-            <h2 className="text-2xl font-semibold text-foreground">
-              A single home for knowledge, discovery, and community.
-            </h2>
+            <h2 className="text-2xl font-semibold text-foreground">News you trust, listings that behave like the real world.</h2>
             <p className="text-sm text-muted-foreground">
-              {SITE_CONFIG.name} brings together publishing, listings, and social bookmarking so teams can move faster
-              and keep their best resources close.
+              {SITE_CONFIG.name} started as a reader-supported newsroom. The classifieds layer gives those same readers a safer, faster way to buy and sell without leaving a brand they already know.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((item) => (

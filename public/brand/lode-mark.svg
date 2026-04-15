@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-labelledby="title desc">
+  <title id="title">Lode News</title>
+  <desc id="desc">Letter L with a gold mineral vein on a plum square</desc>
+  <rect width="32" height="32" rx="8" fill="#62013C"/>
+  <path
+    d="M7.5 24.5 L11.5 12 L16.5 17.5 L24.5 9.5"
+    stroke="#FBE087"
+    stroke-width="2.25"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="24.5" cy="10" r="2.4" fill="#F2676A"/>
+</svg>

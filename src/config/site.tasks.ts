@@ -11,7 +11,7 @@ export const siteTaskDefinitions = [
     key: 'classified',
     label: 'Classifieds',
     route: '/classifieds',
-    description: 'Local offers, jobs, and deals.',
+    description: 'Buy, sell, and trade with readers—vehicles, housing, jobs, gear, and services.',
     contentType: 'classified',
     enabled: true,
   },

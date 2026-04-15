@@ -77,9 +77,9 @@ export function NoAdsFound() {
   return (
     <EmptyState
       icon={Tag}
-      title="No ads found"
-      description="There are no classified ads matching your criteria. Check back later or try different search terms."
-      action={{ label: 'Browse All Ads', href: '/classifieds' }}
+      title="No ads match yet"
+      description="Try another keyword or category, or widen your search—new Front Range listings go live every day."
+      action={{ label: 'Browse classifieds', href: '/classifieds' }}
     />
   )
 }

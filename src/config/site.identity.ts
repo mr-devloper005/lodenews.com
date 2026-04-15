@@ -1,10 +1,10 @@
 export const siteIdentity = {
-  code: process.env.NEXT_PUBLIC_SITE_CODE || 'lodenews',
+  code: process.env.NEXT_PUBLIC_SITE_CODE || 'ln7x4v2q9m',
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'Lode News',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Business listing platform',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Local classifieds & marketplace',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A listing-first business discovery platform for browsing services, businesses, spaces, and location-based opportunities through a cleaner browsing experience.',
+    'Lode News runs a premium local classifieds marketplace: buy and sell vehicles, housing, electronics, and services with clear photos, pricing, and contact details—built for fast browsing and serious buyers.',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'lodenews.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://lodenews.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',
