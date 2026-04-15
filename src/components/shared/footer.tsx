@@ -60,7 +60,17 @@ export function Footer() {
       <footer className="border-t border-[#AD2959]/35 bg-[#62013C] text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
-            <p className="bg-gradient-to-r from-[#FBE087] to-[#F2676A] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent">{SITE_CONFIG.name}</p>
+            <div className="flex items-center gap-3">
+              <img
+                src="/favicon.png?v=1"
+                alt=""
+                width={40}
+                height={40}
+                className="h-10 w-10 shrink-0 rounded-xl object-contain ring-1 ring-white/25"
+                aria-hidden
+              />
+              <p className="bg-gradient-to-r from-[#FBE087] to-[#F2676A] bg-clip-text text-xl font-black tracking-[-0.04em] text-transparent">{SITE_CONFIG.name}</p>
+            </div>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">{SITE_CONFIG.description}</p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -86,13 +96,17 @@ export function Footer() {
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr_1fr]">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-7">
               <div className="flex flex-col gap-1">
-                <img
-                  src="/logo-lodenews.svg?v=2"
-                  alt={SITE_CONFIG.name}
-                  width={200}
-                  height={40}
-                  className="h-10 w-auto max-w-[200px] object-contain object-left"
-                />
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/favicon.png?v=1"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 shrink-0 rounded-xl object-contain ring-1 ring-white/15"
+                    aria-hidden
+                  />
+                  <span className="text-lg font-bold tracking-tight text-white">{SITE_CONFIG.name}</span>
+                </div>
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-400">{siteContent.footer.tagline}</p>
               </div>
               <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">{SITE_CONFIG.description}</p>
@@ -148,7 +162,17 @@ export function Footer() {
                 <Sparkles className="h-3.5 w-3.5" />
                 Editorial desk
               </div>
-              <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</h3>
+              <div className="mt-5 flex items-center gap-3">
+                <img
+                  src="/favicon.png?v=1"
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 shrink-0 rounded-2xl border border-[#dbc6b6] bg-white object-contain shadow-sm"
+                  aria-hidden
+                />
+                <h3 className="text-3xl font-semibold tracking-[-0.04em]">{SITE_CONFIG.name}</h3>
+              </div>
               <p className="mt-4 max-w-md text-sm leading-7 text-[#72594a]">{SITE_CONFIG.description}</p>
             </div>
             <div>
@@ -179,7 +203,10 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
           <div>
             <Link href="/" className="flex flex-col gap-1">
-              <img src="/logo-lodenews.svg?v=2" alt={SITE_CONFIG.name} width={200} height={40} className="h-10 w-auto max-w-[200px] object-contain object-left" />
+              <div className="flex items-center gap-3">
+                <img src="/favicon.png?v=1" alt="" width={40} height={40} className="h-10 w-10 shrink-0 object-contain" aria-hidden />
+                <span className="text-xl font-extrabold tracking-tight text-slate-950">{SITE_CONFIG.name}</span>
+              </div>
               <span className="text-xs uppercase tracking-[0.22em] text-slate-500">{siteContent.footer.tagline}</span>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">{SITE_CONFIG.description}</p>

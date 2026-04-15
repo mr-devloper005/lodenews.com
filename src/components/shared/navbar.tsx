@@ -114,27 +114,46 @@ export function Navbar() {
             premiumClassifiedNav ? 'min-h-[4.25rem] py-3 lg:min-h-[4.75rem] lg:py-0' : 'h-20',
           )}
         >
-          <div className="flex min-w-0 flex-1 items-center gap-3 lg:gap-6">
+          <div
+            className={cn(
+              'flex items-center gap-3 lg:gap-6',
+              premiumClassifiedNav ? 'shrink-0' : 'min-w-0 flex-1',
+            )}
+          >
             <Link href="/" className="group flex min-w-0 shrink-0 flex-col justify-center gap-0.5">
               {premiumClassifiedNav ? (
-                <>
-                  <span
-                    className="bg-gradient-to-r from-[#FBE087] via-white to-[#F2676A] bg-clip-text font-black tracking-[-0.07em] text-transparent"
-                    style={{ fontSize: 'clamp(1.35rem, 3.8vw, 1.9rem)' }}
-                  >
-                    {SITE_CONFIG.name}
-                  </span>
-                  <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-white/55 sm:block">{siteContent.navbar.tagline}</span>
-                </>
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <img
+                    src="/favicon.png?v=1"
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="h-9 w-9 shrink-0 rounded-xl object-contain shadow-[0_2px_12px_rgba(0,0,0,0.18)] ring-1 ring-white/30 sm:h-10 sm:w-10"
+                    aria-hidden
+                  />
+                  <div className="flex min-w-0 flex-col justify-center gap-0.5">
+                    <span
+                      className="bg-gradient-to-r from-[#FBE087] via-white to-[#F2676A] bg-clip-text font-black tracking-[-0.07em] text-transparent"
+                      style={{ fontSize: 'clamp(1.35rem, 3.8vw, 1.9rem)' }}
+                    >
+                      {SITE_CONFIG.name}
+                    </span>
+                    <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-white/55 sm:block">{siteContent.navbar.tagline}</span>
+                  </div>
+                </div>
               ) : (
                 <div className="flex min-w-0 flex-col gap-0.5">
-                  <img
-                    src="/logo-lodenews.svg?v=2"
-                    alt={SITE_CONFIG.name}
-                    width={200}
-                    height={40}
-                    className="h-8 w-auto max-w-[min(200px,52vw)] object-contain object-left sm:h-9"
-                  />
+                  <div className="flex min-w-0 items-center gap-2.5">
+                    <img
+                      src="/favicon.png?v=1"
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9"
+                      aria-hidden
+                    />
+                    <span className="truncate text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">{SITE_CONFIG.name}</span>
+                  </div>
                   <span className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground sm:block">{siteContent.navbar.tagline}</span>
                 </div>
               )}
@@ -294,13 +313,17 @@ export function Navbar() {
       <nav className={cn('mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8', isFloating ? 'h-24 pt-4' : 'h-20')}>
         <div className="flex min-w-0 flex-1 items-center gap-4 lg:gap-7">
           <Link href="/" className="flex min-w-0 shrink-0 flex-col gap-0.5 pr-2 sm:flex-row sm:items-center sm:gap-3">
-            <img
-              src="/logo-lodenews.svg?v=2"
-              alt={SITE_CONFIG.name}
-              width={200}
-              height={40}
-              className="h-8 w-auto max-w-[min(200px,55vw)] object-contain object-left sm:h-9"
-            />
+            <div className="flex min-w-0 items-center gap-2.5">
+              <img
+                src="/favicon.png?v=1"
+                alt=""
+                width={36}
+                height={36}
+                className={cn('h-8 w-8 shrink-0 object-contain sm:h-9 sm:w-9', style.logo)}
+                aria-hidden
+              />
+              <span className="truncate text-base font-extrabold tracking-tight sm:text-lg">{SITE_CONFIG.name}</span>
+            </div>
             <span className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground sm:block">{siteContent.navbar.tagline}</span>
           </Link>
 
