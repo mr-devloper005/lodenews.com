@@ -1,0 +1,28 @@
+
+> my-project@0.1.0 dev
+> next dev -p 3006
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3006
+- Network:       http://192.168.25.107:3006
+- Environments: .env
+
+✓ Starting...
+✓ Ready in 3.9s
+○ Compiling /classifieds/[slug] ...
+ GET /classifieds/placeholder 404 in 7.4s (compile: 6.4s, generate-params: 504ms, render: 1001ms)
+ GET /classifieds/placeholder 404 in 469ms (compile: 13ms, generate-params: 9ms, render: 456ms)
+✓ Compiled in 381ms
+ GET / 200 in 3.2s (compile: 1982ms, render: 1191ms)
+✓ Compiled in 307ms
+ GET / 200 in 97ms (compile: 7ms, render: 90ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 6.3s (compile: 5.4s, generate-params: 14ms, render: 861ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 1474ms (compile: 6ms, generate-params: 56µs, render: 1468ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 1199ms (compile: 79ms, generate-params: 65ms, render: 1119ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 976ms (compile: 71ms, generate-params: 166µs, render: 904ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 633ms (compile: 40ms, generate-params: 80µs, render: 593ms)
+ GET /classifieds/advanced-ai-processing-for-autonomous-flights-to-enhance-safety-and-efficiency 200 in 347ms (compile: 74ms, generate-params: 95µs, render: 272ms)
+ GET / 200 in 560ms (compile: 8ms, render: 552ms)
+ GET / 200 in 561ms (compile: 5ms, render: 556ms)
+ GET /classifieds/emotional-intelligence-training-in-mumbai-for-personal-and-professional-growth 200 in 227ms (compile: 12ms, generate-params: 8ms, render: 216ms)
+✓ Compiled in 132ms

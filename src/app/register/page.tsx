@@ -1,55 +1,82 @@
+'use client'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Bookmark, Building2, FileText, Image as ImageIcon, Sparkles } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getProductKind } from '@/design/factory/get-product-kind'
+import { useAuth } from '@/lib/auth-context'
+import { useState } from 'react'
 
-function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
+function getRegisterConfig(kind: ReturnType<typeof getProductKind>, brandPack: string) {
   if (kind === 'directory') {
+    if (brandPack === 'market-utility') {
+      return {
+        shell: 'bg-[linear-gradient(180deg,#faf5f7_0%,#f3e9ee_100%)] text-[#62013C]',
+        panel: 'border border-[#e8d0da] bg-white shadow-[0_28px_72px_rgba(98,1,60,0.09)]',
+        side: 'border border-[#ead6e0] bg-[#fdf8fa]',
+        muted: 'text-[#6b4a60]',
+        title: 'text-[#62013C]',
+        badge: 'bg-[#AD2959] text-[#fff5f7]',
+        action: 'bg-[#F2676A] text-white shadow-[0_12px_32px_rgba(242,103,106,0.35)] hover:bg-[#e85558]',
+        icon: Building2,
+        titleText: 'Create a business-ready account',
+        body: 'List services, manage locations, and activate trust signals with a proper directory workflow.',
+      }
+    }
     return {
       shell: 'bg-[#f8fbff] text-slate-950',
-      panel: 'border border-slate-200 bg-white',
+      panel: 'border border-slate-200 bg-white shadow-[0_24px_64px_rgba(15,23,42,0.08)]',
       side: 'border border-slate-200 bg-slate-50',
       muted: 'text-slate-600',
+      title: 'text-slate-950',
+      badge: 'bg-slate-950 text-white',
       action: 'bg-slate-950 text-white hover:bg-slate-800',
       icon: Building2,
-      title: 'Create a business-ready account',
+      titleText: 'Create a business-ready account',
       body: 'List services, manage locations, and activate trust signals with a proper directory workflow.',
     }
   }
   if (kind === 'editorial') {
     return {
       shell: 'bg-[#fbf6ee] text-[#241711]',
-      panel: 'border border-[#dcc8b7] bg-[#fffdfa]',
+      panel: 'border border-[#dcc8b7] bg-[#fffdfa] shadow-[0_24px_60px_rgba(77,47,27,0.08)]',
       side: 'border border-[#e6d6c8] bg-[#fff4e8]',
       muted: 'text-[#6e5547]',
+      title: 'text-[#241711]',
+      badge: 'bg-[#241711] text-[#fff1e2]',
       action: 'bg-[#241711] text-[#fff1e2] hover:bg-[#3a241b]',
       icon: FileText,
-      title: 'Start your contributor workspace',
+      titleText: 'Start your contributor workspace',
       body: 'Create a profile for essays, issue drafts, editorial review, and publication scheduling.',
     }
   }
   if (kind === 'visual') {
     return {
       shell: 'bg-[#07101f] text-white',
-      panel: 'border border-white/10 bg-white/6',
-      side: 'border border-white/10 bg-white/5',
+      panel: 'border border-white/10 bg-[rgba(11,18,31,0.78)] shadow-[0_28px_80px_rgba(0,0,0,0.35)]',
+      side: 'border border-white/10 bg-white/6',
       muted: 'text-slate-300',
+      title: 'text-white',
+      badge: 'bg-[#8df0c8] text-[#07111f]',
       action: 'bg-[#8df0c8] text-[#07111f] hover:bg-[#77dfb8]',
       icon: ImageIcon,
-      title: 'Set up your creator profile',
+      titleText: 'Set up your creator profile',
       body: 'Launch a visual-first account with gallery publishing, identity surfaces, and profile-led discovery.',
     }
   }
   return {
     shell: 'bg-[#f7f1ea] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4]',
+    panel: 'border border-[#ddcdbd] bg-[#fffaf4] shadow-[0_24px_60px_rgba(91,56,37,0.08)]',
     side: 'border border-[#e8dbce] bg-[#f3e8db]',
     muted: 'text-[#71574a]',
+    title: 'text-[#261811]',
+    badge: 'bg-[#5b2b3b] text-[#fff0f5]',
     action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
     icon: Bookmark,
-    title: 'Create a curator account',
+    titleText: 'Create a curator account',
     body: 'Build shelves, save references, and connect collections to your profile without a generic feed setup.',
   }
 }
@@ -57,8 +84,20 @@ function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
 export default function RegisterPage() {
   const { recipe } = getFactoryState()
   const productKind = getProductKind(recipe)
-  const config = getRegisterConfig(productKind)
+  const config = getRegisterConfig(productKind, recipe.brandPack)
   const Icon = config.icon
+  const { signup, isLoading } = useAuth()
+  const router = useRouter()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [bio, setBio] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await signup(name, email, password)
+    router.push('/')
+  }
 
   return (
     <div className={`min-h-screen ${config.shell}`}>
@@ -67,7 +106,7 @@ export default function RegisterPage() {
         <section className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
           <div className={`rounded-[2rem] p-8 ${config.side}`}>
             <Icon className="h-8 w-8" />
-            <h1 className="mt-5 text-4xl font-semibold tracking-[-0.05em]">{config.title}</h1>
+            <h1 className={`mt-5 text-4xl font-semibold tracking-[-0.05em] ${config.title}`}>{config.titleText}</h1>
             <p className={`mt-5 text-sm leading-8 ${config.muted}`}>{config.body}</p>
             <div className="mt-8 grid gap-4">
               {['Different onboarding per product family', 'No repeated one-size-fits-all shell', 'Profile, publishing, and discovery aligned'].map((item) => (
@@ -78,12 +117,45 @@ export default function RegisterPage() {
 
           <div className={`rounded-[2rem] p-8 ${config.panel}`}>
             <p className="text-xs font-semibold uppercase tracking-[0.24em] opacity-70">Create account</p>
-            <form className="mt-6 grid gap-4">
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Full name" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Email address" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="Password" type="password" />
-              <input className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" placeholder="What are you creating or publishing?" />
-              <button type="submit" className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${config.action}`}>Create account</button>
+            <form className="mt-6 grid gap-4" onSubmit={handleSubmit}>
+              <input 
+                className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" 
+                placeholder="Full name" 
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input 
+                className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" 
+                placeholder="Email address" 
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input 
+                className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" 
+                placeholder="Password" 
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <input 
+                className="h-12 rounded-xl border border-current/10 bg-transparent px-4 text-sm" 
+                placeholder="What are you creating or publishing?" 
+                type="text"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+              <button 
+                type="submit" 
+                className={`inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-semibold ${config.action}`}
+                disabled={isLoading}
+              >
+                {isLoading ? 'Creating account...' : 'Create account'}
+              </button>
             </form>
             <div className={`mt-6 flex items-center justify-between text-sm ${config.muted}`}>
               <span>Already have an account?</span>
