@@ -46,6 +46,14 @@ export default function ContactPage() {
   const { recipe } = getFactoryState()
   const productKind = getProductKind(recipe)
   const tone = getTone(productKind)
+  const supportEmail = process.env.NEXT_PUBLIC_CONTACT_SUPPORT_EMAIL || 'support@lodenews.com'
+  const salesEmail = process.env.NEXT_PUBLIC_CONTACT_SALES_EMAIL || 'sales@lodenews.com'
+  const editorialEmail = process.env.NEXT_PUBLIC_CONTACT_EDITORIAL_EMAIL || 'editorial@lodenews.com'
+  const emailButtons = [
+    { label: 'Support', value: supportEmail },
+    { label: 'Sales', value: salesEmail },
+    { label: 'Editorial', value: editorialEmail },
+  ]
   const lanes =
     productKind === 'directory'
       ? [
@@ -102,6 +110,20 @@ export default function ContactPage() {
                   <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{lane.body}</p>
                 </div>
               ))}
+            </div>
+            <div className={`mt-8 rounded-[1.6rem] p-5 ${tone.soft}`}>
+              <h2 className="text-xl font-semibold">Quick Email Contacts</h2>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {emailButtons.map((item) => (
+                  <a
+                    key={item.label}
+                    href={`mailto:${item.value}`}
+                    className={`inline-flex h-10 items-center justify-center rounded-full px-4 text-sm font-semibold ${tone.action}`}
+                  >
+                    {item.label}: {item.value}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
