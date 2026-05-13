@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Search, Menu, X, User, FileText, Building2, LayoutGrid, Tag, Image as ImageIcon, ChevronRight, Sparkles, MapPin, Plus } from 'lucide-react'
+import { Search, Menu, X, User, FileText, Building2, LayoutGrid, Tag, Image as ImageIcon, ChevronRight, MapPin, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/lib/auth-context'
 import { SITE_CONFIG, type TaskKey } from '@/lib/site-config'
@@ -138,7 +138,6 @@ export function Navbar() {
                     >
                       {SITE_CONFIG.name}
                     </span>
-                    <span className="hidden text-[10px] font-semibold uppercase tracking-[0.28em] text-white/55 sm:block">{siteContent.navbar.tagline}</span>
                   </div>
                 </div>
               ) : (
@@ -154,7 +153,6 @@ export function Navbar() {
                     />
                     <span className="truncate text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">{SITE_CONFIG.name}</span>
                   </div>
-                  <span className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground sm:block">{siteContent.navbar.tagline}</span>
                 </div>
               )}
             </Link>
@@ -206,19 +204,6 @@ export function Navbar() {
           )}
 
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-            {primaryTask ? (
-              <Link
-                href={primaryTask.route}
-                className={cn(
-                  'hidden items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] md:inline-flex',
-                  premiumClassifiedNav ? 'border border-white/20 text-white/85 hover:bg-white/10' : 'border border-current/10 opacity-75',
-                )}
-              >
-                <Sparkles className="h-3.5 w-3.5" />
-                {primaryTask.label}
-              </Link>
-            ) : null}
-
             {isAuthenticated ? (
               <NavbarAuthControls />
             ) : (
@@ -245,28 +230,6 @@ export function Navbar() {
             </Button>
           </div>
         </nav>
-
-        {premiumClassifiedNav ? (
-          <div className="border-t border-[#AD2959]/45 bg-white">
-            <div className="mx-auto flex max-w-7xl items-center gap-0 overflow-x-auto overscroll-x-contain px-0 py-0 sm:px-2 lg:px-8">
-              {primaryNavigation.map((task) => {
-                const isActive = pathname.startsWith(task.route)
-                return (
-                  <Link
-                    key={task.key}
-                    href={task.route}
-                    className={cn(
-                      'whitespace-nowrap border-r border-[#ead6e0] px-4 py-3 text-sm font-bold tracking-tight transition-colors last:border-r-0 sm:px-5',
-                      isActive ? 'text-[#F2676A]' : 'text-[#62013C]/80 hover:bg-[#fdf8fa] hover:text-[#AD2959]',
-                    )}
-                  >
-                    {task.label}
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        ) : null}
 
         {isMobileMenuOpen && (
           <div className={palette.mobile}>

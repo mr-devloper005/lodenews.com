@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/shared/footer";
 import { NavbarShell } from "@/components/shared/navbar-shell";
-import { ContentImage } from "@/components/shared/content-image";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Button } from "@/components/ui/button";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
@@ -114,14 +113,8 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
         <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
           <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
             <div className="flex justify-center md:justify-start">
-              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
-                {logoUrl ? (
-                  <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="144px" intrinsicWidth={144} intrinsicHeight={144} />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">
-                    {post.title.slice(0, 1).toUpperCase()}
-                  </div>
-                )}
+              <div className="flex h-36 w-36 items-center justify-center rounded-full border border-border/70 bg-muted text-3xl font-semibold text-muted-foreground">
+                {post.title.slice(0, 1).toUpperCase()}
               </div>
             </div>
             <div>
