@@ -24,7 +24,11 @@ const footerLinks = {
     icon: taskIcons[task.key] || LayoutGrid,
   })),
   company: [
-    { name: 'About', href: '/about' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'Help Center', href: '/help' },
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms', href: '/terms' },
     { name: 'Team', href: '/team' },
     { name: 'Careers', href: '/careers' },
     { name: 'Blog', href: '/blog' },
@@ -73,16 +77,25 @@ export function Footer() {
             </div>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">{SITE_CONFIG.description}</p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {enabledTasks.slice(0, 5).map((task) => (
-              <Link
-                key={task.key}
-                href={task.route}
-                className="rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#FBE087]/95 transition hover:border-[#F2676A]/60 hover:bg-white/10 hover:text-white"
-              >
-                {task.label}
-              </Link>
-            ))}
+          <div className="space-y-3">
+            <div className="flex flex-wrap gap-2">
+              {enabledTasks.filter((task) => task.key !== 'classified').slice(0, 5).map((task) => (
+                <Link
+                  key={task.key}
+                  href={task.route}
+                  className="rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#FBE087]/95 transition hover:border-[#F2676A]/60 hover:bg-white/10 hover:text-white"
+                >
+                  {task.label}
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-white/80">
+              <Link href="/about" className="hover:text-white">About Us</Link>
+              <Link href="/contact" className="hover:text-white">Contact Us</Link>
+              <Link href="/help" className="hover:text-white">Help Center</Link>
+              <Link href="/privacy" className="hover:text-white">Privacy</Link>
+              <Link href="/terms" className="hover:text-white">Terms</Link>
+            </div>
           </div>
         </div>
       </footer>
@@ -127,9 +140,9 @@ export function Footer() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Resources</h3>
+                <h3 className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">Company</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-200">
-                  {footerLinks.resources.map((item) => (
+                  {footerLinks.company.map((item) => (
                     <li key={item.name}><Link href={item.href} className="hover:text-white">{item.name}</Link></li>
                   ))}
                 </ul>

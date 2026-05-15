@@ -198,23 +198,25 @@ export function DirectoryTaskDetailPage({
           </section>
         ) : null}
 
-        <section className="mt-12 border-t border-border pt-8">
-          <div className="mb-5 flex items-center justify-between gap-4">
-            <h2 className="text-xl font-semibold text-foreground">More in {category}</h2>
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-              <Tag className="h-3.5 w-3.5" /> {taskLabel}
-            </span>
-          </div>
-          {related.length ? (
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <TaskPostCard key={item.id} post={item} href={`${taskRoute}/${item.slug}`} taskKey={task} />
-              ))}
+        {task !== 'classified' ? (
+          <section className="mt-12 border-t border-border pt-8">
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <h2 className="text-xl font-semibold text-foreground">More in {category}</h2>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                <Tag className="h-3.5 w-3.5" /> {taskLabel}
+              </span>
             </div>
-          ) : (
-            <p className="text-sm text-muted-foreground">No related posts yet.</p>
-          )}
-        </section>
+            {related.length ? (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {related.map((item) => (
+                  <TaskPostCard key={item.id} post={item} href={`${taskRoute}/${item.slug}`} taskKey={task} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">No related posts yet.</p>
+            )}
+          </section>
+        ) : null}
       </main>
     </div>
   )

@@ -98,8 +98,6 @@ export function TaskPostCard({
   const rawCategory = content.category || post.tags?.[0] || 'Post'
   const normalizedCategory = normalizeCategory(rawCategory)
   const category = CATEGORY_OPTIONS.find((item) => item.slug === normalizedCategory)?.name || rawCategory
-  const contentRecord = content as Record<string, unknown>
-  const priceValue = typeof contentRecord.price === 'number' && Number.isFinite(contentRecord.price) ? contentRecord.price : null
   const variant = taskKey || 'listing'
   const visualVariant = cardStyles[getVariantForTask(variant)]
   const isBookmarkVariant = variant === 'sbm' || variant === 'social'
@@ -147,9 +145,6 @@ export function TaskPostCard({
             <h3 className={`line-clamp-2 text-xl font-bold leading-snug ${cardTone.title}`}>{post.title}</h3>
             <ArrowUpRight className={`h-5 w-5 shrink-0 ${cardTone.muted}`} />
           </div>
-          {priceValue != null && recipe.brandPack === 'market-utility' ? (
-            <p className="mt-2 text-2xl font-black tracking-tight text-[#F2676A]">${priceValue.toLocaleString()}</p>
-          ) : null}
           <p className={`mt-3 line-clamp-3 text-sm leading-7 ${cardTone.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this local listing.'}</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs">
             {content.location ? <span className={`inline-flex items-center gap-1 ${cardTone.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}

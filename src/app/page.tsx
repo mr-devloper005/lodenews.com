@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Bookmark, Building2, Compass, FileText, Globe2, Image as ImageIcon, LayoutGrid, MapPin, ShieldCheck, Tag, User } from 'lucide-react'
+import { ArrowRight, Bookmark, Building2, FileText, Globe2, Image as ImageIcon, LayoutGrid, MapPin, Tag, User } from 'lucide-react'
 import { ContentImage } from '@/components/shared/content-image'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
@@ -157,18 +157,12 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div>
-              <span className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] ${tone.badge}`}>
-                <Compass className="h-3.5 w-3.5" />
-                Premium classifieds
-              </span>
               <h1 className={`mt-7 max-w-4xl text-5xl font-bold tracking-[-0.055em] sm:text-6xl lg:text-7xl ${tone.title}`}>
                 Big, clear listings. Compare fast, contact faster.
               </h1>
               <p className={`mt-7 max-w-2xl text-lg leading-8 sm:text-xl ${tone.muted}`}>{SITE_CONFIG.description}</p>
 
-              <div className={`mt-10 grid gap-3 rounded-[1.75rem] p-2 sm:p-3 ${tone.panel} md:grid-cols-[1.2fr_0.85fr_auto]`}>
-                <div className="rounded-2xl bg-[#FBE087]/90 px-5 py-4 text-base font-semibold text-[#62013C] shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]">What are you looking for?</div>
-                <div className="rounded-2xl bg-white/90 px-5 py-4 text-base font-medium text-[#62013C]/80">City or area</div>
+              <div className="mt-10">
                 <Link href={primaryTask?.route || browseAllHref} className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-base font-bold ${tone.action}`}>
                   Browse ads
                   <ArrowRight className="h-5 w-5" />
@@ -190,17 +184,6 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
             </div>
 
             <div className="grid gap-4">
-              <div className={`rounded-[2rem] p-6 ${tone.panel}`}>
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] opacity-70">Primary lane</p>
-                    <h2 className="mt-2 text-3xl font-semibold">{primaryTask?.label || 'Listings'}</h2>
-                  </div>
-                  <ShieldCheck className="h-6 w-6" />
-                </div>
-                <p className={`mt-4 text-sm leading-7 ${tone.muted}`}>{primaryTask?.description || 'Structured discovery for services, offers, and business surfaces.'}</p>
-              </div>
-
               <div className="grid gap-4 sm:grid-cols-2">
                 {quickRoutes.map((task) => {
                   const Icon = taskIcons[task.key as TaskKey] || LayoutGrid
